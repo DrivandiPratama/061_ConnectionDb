@@ -23,6 +23,10 @@ app.get('/', (req, res, next) => {
     pool.query('Select * from biodata')
     .then(tesData => {
         console.log(tesData);
+        res.send(testData.rows);
+    })
+    .catch(err => {
+        console.error(err);
         res.status(500).send('Internal Server Error');
     });
 })
