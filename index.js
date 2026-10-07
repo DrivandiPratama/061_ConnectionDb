@@ -17,3 +17,12 @@ const pool = new Pool({
     password: '',//sesuaikan dengan password database masing masing
     port: 5432
 })
+
+app.get('/', (req, res, next) => { 
+    console.log("TEST DATA :");
+    pool.query('Select * from biodata')
+    .then(tesData => {
+        console.log(tesData);
+        res.status(500).send('Internal Server Error');
+    });
+})
